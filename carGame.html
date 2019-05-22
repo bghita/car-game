@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Car Adventures!</h1>
+    <h2>Type "h" to honk, "d" to drive to work, "w" to drive around the world, or "t" to get a tuneup.</h2>
+    <h2>See console for car stats.</h2>
+
+    <script>
+    // Create a car object
+    const car = {
+      // must have make
+      make: 'Mazda',
+      // must have model
+      model: 'Miata',
+      // must have color
+      color: 'black',
+      // must have mileage
+      mileage: 103000,
+      // must have isWorking
+      isWorking: true,
+      honk: () => {
+          alert("Honk honk");
+      },
+      driveToWork: function(){
+        this.mileage += 1000;
+        alert(`Old mileage is ${this.mileage - 1000} New mileage is ${this.mileage}`);
+        // this.mileage = this.mileage + 2000;        
+        if(this.mileage === 105000){
+            alert("your car is busted");            
+            this.isWorking = false;
+        } 
+      },
+      driveAroundTheWorld: function() {
+        alert(`Old mileage is ${this.mileage}`);
+        
+        alert(`New mileage is ${this.mileage += 25000}`);
+      },
+      tuneUp: function(){
+          if(!this.isWorking) {
+              this.isWorking = true;
+          } else {
+              alert("You don't need up!");
+          }
+      }
+
+      
+      // must have honk method
+      // must have driveToWork
+      // must have driveAroundTheWorld
+      // must have tuneUp
+    }
+
+    
+
+
+      // createFunction that console.logs 
+
+      const renderLogs = () => {
+          console.log("Make is " + car.make)
+          console.log(`Model is: ${car.model}`)
+          console.log(`Is car working: ${car.isWorking}`);
+          console.log(`Mileage is ${car.mileage}`)
+          console.log(`Color is: ${car.color}`);
+      }
+      //cars property and values
+
+      // when a user lets go of a key
+      document.onkeyup = event => {
+          switch(event.key) {
+            case "h":
+                car.honk();
+                renderLogs();
+                break;
+            case "d":
+                car.driveToWork();
+                renderLogs();
+                break;
+            case "w":
+                car.driveAroundTheWorld();
+                renderLogs();
+                break;
+            case "t":
+                car.tuneUp();
+                renderLogs();
+                break;
+            default:
+                return;
+          }
+
+        //   if(event.key === "h") {
+        //     car.honk();
+        //     renderLogs();
+        //   } else if (event.key === "d") {
+        //     car.driveToWork();
+        //     renderLogs();
+        //   } else if (event.key === "w") {
+        //     car.driveAroundTheWorld();
+        //     renderLogs();
+        //   } else if (event.key === 't') {
+        //     car.tuneUp();
+        //     renderLogs();
+        //   } else {
+        //       return;
+        //   }
+
+      }
+        // if its h call honk method
+        // if its d call driveToWork method
+        // if it's t call tuneUp method
+        // if it's w call driveAroundTheWorld method
+
+    </script>
+</body>
+</html>
